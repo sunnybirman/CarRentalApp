@@ -11,7 +11,6 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 public class LeasingContractDTO {
-
     private Long contractId;
 
     @NotBlank(message = "Contract number cannot be blank")

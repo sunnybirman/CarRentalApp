@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -22,10 +23,9 @@ public class VehicleSummaryDTO {
     @Max(value = 2100, message = "Model year should be less than or equal to 2100")
     private int modelYear;
 
-    @NotBlank(message = "Vehicle Identification Number is required")
-    @Pattern(
-            regexp = "[A-HJ-NPR-Z0-9]{17}",
-            message = "Vehicle Identification Number (VIN) should be a 17-character alphanumeric string"
-    )
     private String vehicleIdentificationNumber;
+
+    @DecimalMin(value = "0.01", inclusive = true) // Minimum value, inclusive
+    @DecimalMax(value = "1000.00", inclusive = true) // Maximum value, inclusive
+    private BigDecimal price;
 }
